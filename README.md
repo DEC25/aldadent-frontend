@@ -12,8 +12,9 @@ node --version && npm --version
 
 Nos deberia responder algo similiar a lo siguiente:
 
->v##.#.#...
->#.#.#
+>v##.#.#.
+
+>#.#.#.
 
 Si el comando no se reconoce y no cuentas con NodeJS, puedes descargarlo haciendo [aqui](https://nodejs.org/en/download/).
 
