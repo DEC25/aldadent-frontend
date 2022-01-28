@@ -1,25 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/header';
-import Footer from './components/footer';
-import Main from './components/main';
-import Login from './components/login';
-import Car from './components/Car';
-import Addresses from './components/Addresses';
-import LoginForm from './components/loginForm';
-import Signup from './components/signup';
-import ProductList from './components/ProductList';
+import Header from './components/home/header';
+import Footer from './components/home/footer';
+import Main from './components/home/main';
+import Login from './components/auth/login';
+import Car from './components/car/Car';
+import Addresses from './components/car/Addresses';
+import LoginForm from './components/auth/loginForm';
+import Signup from './components/auth/signup';
+import ProductList from './components/products/ProductList';
 import { Toaster } from 'react-hot-toast';
-import ProductView from './components/ProductView';
-import UpdateProd from './components/UpdateProd';
-import OrderList from './components/OrderList'
-import OrderDetail from './components/OrderDetail';
-import Dashboard from './components/Dashboard';
+import ProductView from './components/products/ProductView';
+import UpdateProd from './components/products/UpdateProd';
+import OrderList from './components/orders/OrderList';
+import OrderDetail from './components/orders/OrderDetail';
+import Dashboard from './components/dashboard/Dashboard';
 
 
 function App() {
-
-  
 
   return (
     <div className="App">
