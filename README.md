@@ -1,3 +1,59 @@
+# Pasos para ejecutar el proyecto en local
+
+## NodeJS
+
+Se debe tener instalado **NodeJS** junto con el Administrador de Paquetes de Node **(npm)**
+
+Para verificar si tienes instalado **NodeJS** junto con **npm** puedes ejecutar los siguientes comandos:
+
+```cmd
+node --version
+npm --version
+```
+
+Si no cuentas con NodeJS, puedes descargarlo haciendo click [aqui](https://nodejs.org/en/download/)
+
+## Instalar las dependencias de ReactJS
+
+### Verificar la ubicacion de la terminal
+
+Primero, debemos tener en cuenta que nuestra consola debe de estar ubicada en la carpeta del proyecto
+
+Para eso podemos escribir el siguiente comando:
+
+```cmd
+pwd
+```
+
+El comando nos deberia responder con una linea similar a la siguiente:
+
+>C:\Users\<tu_usuario>\Desktop\html-css
+
+Podemos saber que estamos en nuestro proyecto ya que el ultimo argumento es `html-css`
+Considerando que no se le haya cambiado el nombre al momento de clonar el repositorio
+Si se le cambio el nombre a la carpeta, el ultimo argumento deberia ser el nombre que se le asignó.
+
+### Continuar con la instalacion de dependencias
+
+Luego de realizar el primer paso, tenemos que instalar las dependencias de **React** para que el proyecto
+se pueda ejecutar sin ningun problema.
+
+Para eso debemos ejecutar el siguiente comando:
+
+```cmd
+npm install
+```
+
+## Compilar el proyecto
+
+Luego de haber instalado las dependencias del proyecto, solo queda compilarlo con el siguiente comando:
+
+```cmd
+npm start
+```
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
