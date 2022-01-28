@@ -6,7 +6,7 @@ Se debe tener instalado **NodeJS** junto con el Administrador de Paquetes de Nod
 
 Para verificar si tienes instalado **NodeJS** junto con **npm** puedes ejecutar los siguientes comandos:
 
-```cmd
+```bash
 node --version
 npm --version
 ```
@@ -21,7 +21,7 @@ Si no cuentas con NodeJS, puedes descargarlo haciendo click [aqui](https://nodej
 >
 >Para eso podemos escribir el siguiente comando:
 >
->```cmd
+>```bash
 >pwd
 >```
 >
@@ -41,7 +41,7 @@ se pueda ejecutar sin ningun problema.
 
 Para eso debemos ejecutar el siguiente comando:
 
-```cmd
+```bash
 npm install
 ```
 
@@ -49,9 +49,12 @@ npm install
 
 Luego de haber instalado las dependencias del proyecto, solo queda compilarlo con el siguiente comando:
 
-```cmd
+```bash
 npm start
 ```
+
+> El proceso de compilación puede demorar algunos minutos, pero cuando el proyecto haya terminado de compilarse
+> se abrirá el navegador de forma automatica.
 
 ---
 
