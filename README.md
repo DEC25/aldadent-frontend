@@ -27,7 +27,7 @@ Si no cuentas con NodeJS, puedes descargarlo haciendo click [aqui](https://nodej
 >
 >El comando nos deberia responder con una linea similar a la siguiente:
 >
->>C:\Users\<tu_usuario>\Desktop\html-css
+>>C:/Users/<tu_usuario>/Desktop/html-css
 >
 >Podemos saber que estamos en nuestro proyecto ya que el ultimo argumento es `html-css`.
 >
