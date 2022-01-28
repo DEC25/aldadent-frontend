@@ -7,11 +7,15 @@ Se debe tener instalado **NodeJS** junto con el Administrador de Paquetes de Nod
 Para verificar si tienes instalado **NodeJS** junto con **npm** puedes ejecutar los siguientes comandos:
 
 ```bash
-node --version
-npm --version
+node --version && npm --version
 ```
 
-Si no cuentas con NodeJS, puedes descargarlo haciendo click [aqui](https://nodejs.org/en/download/).
+Nos deberia responder algo similiar a lo siguiente:
+
+>v##.#.#
+>#.#.#
+
+Si el comando no se reconoce y no cuentas con NodeJS, puedes descargarlo haciendo [aqui](https://nodejs.org/en/download/).
 
 ## Instalar las dependencias de ReactJS
 
