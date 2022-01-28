@@ -94,6 +94,9 @@ export default function Dashboard() {
     }, [])
 
     return (
+
+        // Aqui va el HTML, dentro de la funcion 'return( _aqui_ )'
+
         <>
             <p className=" h1 text-center mt-5">Productos vendidos del mes,cantidades,ingresos</p>
             <br /><br /><br />
