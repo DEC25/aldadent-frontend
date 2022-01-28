@@ -6,12 +6,16 @@ Se debe tener instalado **NodeJS** junto con el Administrador de Paquetes de Nod
 
 Para verificar si tienes instalado **NodeJS** junto con **npm** puedes ejecutar los siguientes comandos:
 
-```cmd
-node --version
-npm --version
+```bash
+node --version && npm --version
 ```
 
-Si no cuentas con NodeJS, puedes descargarlo haciendo click [aqui](https://nodejs.org/en/download/).
+Nos deberia responder algo similiar a lo siguiente:
+
+>v##.#.#...
+>#.#.#
+
+Si el comando no se reconoce y no cuentas con NodeJS, puedes descargarlo haciendo [aqui](https://nodejs.org/en/download/).
 
 ## Instalar las dependencias de ReactJS
 
@@ -21,17 +25,17 @@ Si no cuentas con NodeJS, puedes descargarlo haciendo click [aqui](https://nodej
 >
 >Para eso podemos escribir el siguiente comando:
 >
->```cmd
+>```bash
 >pwd
 >```
 >
 >El comando nos deberia responder con una linea similar a la siguiente:
 >
->>C:\Users\<tu_usuario>\Desktop\html-css
+>>C:/Users/<tu_usuario>/Desktop/html-css
 >
 >Podemos saber que estamos en nuestro proyecto ya que el ultimo argumento es `html-css`.
 >
->Considerando que no se le haya cambiado el nombre al momento de clonar el repositorio.
+>Considerando que no se le haya cambiado el nombre al momento de clonar el repositorio...
 >Si se le cambio el nombre a la carpeta, el ultimo argumento deberia ser el nombre que se le asignó.
 
 ### Continuar con la instalacion de dependencias
@@ -41,7 +45,7 @@ se pueda ejecutar sin ningun problema.
 
 Para eso debemos ejecutar el siguiente comando:
 
-```cmd
+```bash
 npm install
 ```
 
@@ -49,9 +53,12 @@ npm install
 
 Luego de haber instalado las dependencias del proyecto, solo queda compilarlo con el siguiente comando:
 
-```cmd
+```bash
 npm start
 ```
+
+> El proceso de compilación puede demorar algunos minutos, pero cuando el proyecto haya terminado de compilarse
+> se abrirá el navegador de forma automatica.
 
 ---
 
