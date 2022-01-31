@@ -1,17 +1,8 @@
 import React from 'react'
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getDataDash, getDataSales } from '../../services/dashboard.service';
+import BarChart from './BarChart';
 
 export default function Dashboard() {
 
@@ -19,57 +10,6 @@ export default function Dashboard() {
     const [Cantidad, setCantidad] = useState([])
     const [Amount, setAmount] = useState(0)
     const [Entry, setEntry] = useState(0)
-
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        BarElement,
-        Title,
-        Tooltip,
-        Legend
-    );
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'PRODUCTOS VENDIDOS EN EL MES',
-            },
-        },
-    };
-
-    const labels = Products
-
-    const data = {
-        labels,
-        datasets: [
-            {
-                label: 'Cantidad Vendida',
-                data: Cantidad,
-                backgroundColor: 'blue'//rgba(255, 99, 132, 0.5)',
-            }
-        ],
-    };
-
-    // const exportTable = () => {
-    //     const $btnExportar = document.querySelector("#btnExportar"),
-    //         $tabla = document.querySelector("#tabla");
-
-    //     $btnExportar.addEventListener("click", function () {
-    //         let tableExport = new TableExport($tabla, {
-    //             exportButtons: false, // No queremos botones
-    //             filename: "Reporte de AldaDent", //Nombre del archivo de Excel
-    //             sheetname: "Reporte de AldaDent", //Título de la hoja
-    //         });
-    //         let datos = tableExport.getExportData();
-    //         let preferenciasDocumento = datos.tabla.xlsx;
-    //         tableExport.export2file(preferenciasDocumento.data, preferenciasDocumento.mimeType, preferenciasDocumento.filename, preferenciasDocumento.fileExtension, preferenciasDocumento.merges, preferenciasDocumento.RTL, preferenciasDocumento.sheetname);
-    //     });
-    // }
 
     useEffect(() => {
         getDataSales()
@@ -123,26 +63,25 @@ export default function Dashboard() {
             <br />
             <section className="bg-grey">
                 <div className="container" >
-
-
-
-
                     <div className="card rounded-0">
                         <div className="card-header">
                             Graficos de las ventas del mes
                         </div>
                         <div className="card-body">
-                            <Bar options={options} data={data} />
+                            <BarChart
+                                title={'PRODUCTOS VENDIDOS EN EL MES'}
+                                labels={Products}
+                                labeltext={'Cantidad Vendida'}
+                                data={Cantidad}
+                            />
                         </div>
                     </div>
-
                     <button id="btnExportar" class="btn btn-success">
                         <a href="http://localhost:5000/export" className='text-decoration-none' style={{textDecoration: 'none', color: 'white'}}>
                             <i class="fas fa-file-excel"></i> Exportar datos a Excel
                         </a>
                     </button>
                 </div>
-
             </section>
             <section hidden>
                 <div class="container">
