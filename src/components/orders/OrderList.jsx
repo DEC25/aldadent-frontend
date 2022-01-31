@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import logo from '../image/101604286_1134460936932256_8747082428838838272_n.png'
-import { isLogged } from '../services/auth.service'
-import { getSummarySales } from '../services/sales.service'
+import logo from '../../image/101604286_1134460936932256_8747082428838838272_n.png'
+import { isLogged } from '../../services/auth.service'
+import { getSummarySales } from '../../services/sales.service'
 import { toast } from 'react-hot-toast' 
 
 const OrderListItem = ({ id, date }) => {

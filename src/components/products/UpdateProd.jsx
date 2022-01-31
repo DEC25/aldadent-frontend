@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useParams } from 'react-router-dom'
-import { getProductService, postProductService, updateProductService } from '../services/products.service'
+import { getProductService, postProductService, updateProductService } from '../../services/products.service'
 
 export default function UpdateProd() {
 

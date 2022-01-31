@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { isLogged } from '../services/auth.service'
-import { getItemsCarService } from '../services/car.service'
+import { isLogged } from '../../services/auth.service'
+import { getItemsCarService } from '../../services/car.service'
 import { toast } from 'react-hot-toast'
 
 const InfoProduct = ({ idx, prod, price, cant, total }) => {

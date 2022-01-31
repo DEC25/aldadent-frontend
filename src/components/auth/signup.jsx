@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
-import { isLogged, signupService } from '../services/auth.service'
+import { isLogged, signupService } from '../../services/auth.service'
 
 export default function Signup() {
 

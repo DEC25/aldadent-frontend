@@ -11,7 +11,7 @@ import {
 import { Bar } from 'react-chartjs-2'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getDataDash, getDataSales } from '../services/dashboard.service';
+import { getDataDash, getDataSales } from '../../services/dashboard.service';
 
 export default function Dashboard() {
 

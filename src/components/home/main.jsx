@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import banner from '../image/banner.jpg'
-import abajobanner from '../image/abajodebanner.jpg'
+import banner from '../../image/banner.jpg'
+import abajobanner from '../../image/abajodebanner.jpg'
 
 export default function Main() {
     return (

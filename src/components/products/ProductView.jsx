@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getProductService } from '../services/products.service'
+import { getProductService } from '../../services/products.service'
 
 export default function ProductView() {
 

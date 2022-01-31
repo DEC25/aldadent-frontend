@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { addItemCarService } from '../services/car.service'
-import { isLogged } from '../services/auth.service'
+import { addItemCarService } from '../../services/car.service'
+import { isLogged } from '../../services/auth.service'
 
 export const CardProduct = ({ id, img }) => {
 

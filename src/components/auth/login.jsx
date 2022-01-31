@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import aldaDent from '../image/aldadent.png'
+import aldaDent from '../../image/aldadent.png'
 
 export default function Login() {
     

@@ -1,6 +1,6 @@
 import React from 'react'
-import fblogo from '../image/Face.png'
-import publi from '../image/Alda.jpg'
+import fblogo from '../../image/Face.png'
+import publi from '../../image/Alda.jpg'
 
 export default function Footer() {
     return (

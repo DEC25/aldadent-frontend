@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { postAddress } from '../services/client.service'
+import { postAddress } from '../../services/client.service'
 import { toast } from 'react-hot-toast'
 import { useState } from 'react'
-import { postSale } from '../services/sales.service'
-import { getItemsCarService } from '../services/car.service'
+import { postSale } from '../../services/sales.service'
+import { getItemsCarService } from '../../services/car.service'
 
 export default function Addresses(props) {
 

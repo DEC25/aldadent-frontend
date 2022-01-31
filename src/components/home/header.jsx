@@ -1,13 +1,13 @@
 import React from 'react'
-import logo from '../image/101604286_1134460936932256_8747082428838838272_n.png'
+import logo from '../../image/101604286_1134460936932256_8747082428838838272_n.png'
 // import pedido from '../image/pedidos.png'
-import carrito from '../image/Carrito.png'
-import login from '../image/login.png'
-import logout from '../image/sesion.png'
+import carrito from '../../image/Carrito.png'
+import login from '../../image/login.png'
+import logout from '../../image/sesion.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { isLogged } from '../services/auth.service'
+import { isLogged } from '../../services/auth.service'
 import toast from 'react-hot-toast'
-import list from '../image/pedidos (1).png'
+import list from '../../image/pedidos (1).png'
 
 export default function Header() {
 

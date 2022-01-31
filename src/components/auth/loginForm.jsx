@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { isLogged, loginService } from '../services/auth.service'
+import { isLogged, loginService } from '../../services/auth.service'
 import { Link } from 'react-router-dom'
-import aldaDent from '../image/aldadent.png'
+import aldaDent from '../../image/aldadent.png'
 import { toast } from 'react-hot-toast'
 import { useEffect } from 'react'
 

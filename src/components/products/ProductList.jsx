@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CardProduct } from './cardProduct'
-import { getProductsService } from '../services/products.service'
+import { getProductsService } from '../../services/products.service'
 
 export default function ProductList() {
 

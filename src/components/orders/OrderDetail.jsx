@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
-import { isLogged } from '../services/auth.service'
-import { downloadInvoice, getSale } from '../services/sales.service'
+import { isLogged } from '../../services/auth.service'
+import { downloadInvoice, getSale } from '../../services/sales.service'
 
 export default function OrderDetail() {
 
