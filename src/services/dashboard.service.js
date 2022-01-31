@@ -11,3 +11,14 @@ export const getDataDash = async () => {
     const { data } = await axios.get(`${API_URL}/amount`)
     return data
 }
+
+export const getUserMonthDash = async (m,y) => {
+    const { data } = await axios.get(`${API_URL}/users/date?m=${m}&y=${y}`)
+    return data
+}
+
+export const getAllUsersDash = async () => {
+    const { data } = await axios.get(`${API_URL}/users`)
+    return data
+    
+}
