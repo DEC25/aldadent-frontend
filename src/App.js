@@ -15,7 +15,9 @@ import UpdateProd from './components/products/UpdateProd';
 import OrderList from './components/orders/OrderList';
 import OrderDetail from './components/orders/OrderDetail';
 import Dashboard from './components/dashboard/Dashboard';
-
+import DashProduct from './components/dashboard/DashProducts'
+import DashUsers from './components/dashboard/DashUsers';
+import SaleCompare from './components/dashboard/SaleCompare';
 
 function App() {
 
@@ -38,6 +40,9 @@ function App() {
           <Route path='/pedidos' element={ <OrderList /> } />
           <Route path='/pedidos/:id' element={ <OrderDetail /> } />
           <Route path='/dashboard' element={ <Dashboard/> }/>
+          <Route path='/dashboard/products' element={ <DashProduct /> } />
+          <Route path='/dashboard/users' element={ <DashUsers /> } />
+          <Route path='/dashboard/sales' element={ <SaleCompare /> } />
           {/* <Route path='/test' element={ <Bar options={options} data={data} /> } /> */}
         </Routes>
         <Footer />
