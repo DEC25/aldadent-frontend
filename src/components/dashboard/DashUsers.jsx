@@ -42,7 +42,7 @@ const UserTotalMes = () => {
 
 const ChartUsersMonth = () => {
 
-    const [Data, setData] = useState([]);
+    // const [Data, setData] = useState([]);
     const [Months, setMonths] = useState([]);
     const [DataMonth, setDataMonth] = useState([]);
 
@@ -53,7 +53,7 @@ const ChartUsersMonth = () => {
                     return toast.error('No se pudo obtener las estadisticas')
                 }
 
-                setData([...months])
+                // setData([...months])
                 setMonths([...months.map((v,i) => `${v.month}/${v.year}`)])
                 setDataMonth([...months.map((v,i) => v.cant)])
             })
