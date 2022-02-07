@@ -36,7 +36,7 @@ export default function SaleCompare() {
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h6>Cantidad Total del año</h6>
+                                    <h6>Cantidad Total del Año</h6>
                                     <h3>{YearSales.length}</h3>
                                 </div>
                                 <div class="col-lg-6">
