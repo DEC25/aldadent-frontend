@@ -61,8 +61,6 @@ const ChartUsersMonth = () => {
 
     }, [])
 
-
-
     return (
         <section class="bg-grey">
                 <div class="container" >
