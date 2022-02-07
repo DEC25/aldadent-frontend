@@ -1,6 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { getSalesCompareDash } from '../../services/dashboard.service';
+import BarChart from './BarChart';
+import DataTable from './DataTable';
 
 export default function SaleCompare() {
+
+    const [Sales, setSales] = useState([]);
+    const [MonthSales, setMonthSales] = useState([]);
+    const [YearSales, setYearSales] = useState([]);
+    const [Chart, setChart] = useState({});
+
+    useEffect(() => {
+        getSalesCompareDash()
+            .then(s => {
+                if (!s.success) {
+                    return toast.error('Algo fue mal... (SC)')
+                }
+
+                setSales([...s.sales])
+                setMonthSales([...s.monthSales])
+                setYearSales([...s.yearSales])
+                setChart(s.dataChart)
+            })
+            .catch()
+    }, [])
+
     return (
         <>
             <p class=" h1 text-center ">Ventas de cada mes</p>
@@ -12,11 +37,11 @@ export default function SaleCompare() {
                             <div class="row">
                                 <div class="col-lg-6">
                                     <h6>Cantidad Total del año</h6>
-                                    <h3>aca va p dec</h3>
+                                    <h3>{YearSales.length}</h3>
                                 </div>
                                 <div class="col-lg-6">
-                                    <h6>Meses registrados</h6>
-                                    <h3></h3>
+                                    <h6>Cantitad Total del Mes</h6>
+                                    <h3>{MonthSales.length}</h3>
                                 </div>
                             </div>
                         </div>
@@ -31,14 +56,24 @@ export default function SaleCompare() {
                             Graficos de las ventas de cada mes
                         </div>
                         <div class="card-body">
-                            <canvas id="myChart"></canvas>
+                            <BarChart
+                                title={'VENTAS POR MES'}
+                                labeltext={'Cantidad Vendida'}
+                                labels={Chart.l}
+                                data={Chart.d}
+                            />
                         </div>
                     </div>
                 </div>
             </section>
             <br />
 
-            <container >
+            <DataTable
+                title={'Reporte de Ventas'}
+                headers={['ID', 'Cliente', 'Fecha']}
+                data={Sales}
+            />
+            {/* <container >
                 <br />
                 <br />
                 <br /><br />
@@ -127,7 +162,7 @@ export default function SaleCompare() {
                         </div>
                     </div>
                 </div>
-            </container>
+            </container> */}
         </>
     );
 }

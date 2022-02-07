@@ -22,3 +22,8 @@ export const getAllUsersDash = async () => {
     return data
     
 }
+
+export const getSalesCompareDash = async () => {
+    const { data } = await axios.get(`${API_URL}/sales/compare`)
+    return data
+}
