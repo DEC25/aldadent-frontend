@@ -13,6 +13,13 @@ export default function Signup() {
     const [Correo, setCorreo] = useState(null)
     const [Password, setPassword] = useState(null)
     const [PasswordV, setPasswordV] = useState(null)
+    
+    const errores = {
+        nombre: 'El nombre solo debe contener letras',
+        dni: 'El DNI solo debe tener numeros',
+        telefono: 'El Telefono solo debe contener numeros',
+        correo: 'La forma del correo no es la correcta'
+    }
 
     useEffect(() => {
         if (isLogged()){
@@ -57,7 +64,7 @@ export default function Signup() {
                     <input
                         type="text"
                         className="form-control"
-                        name="text"
+                        name="nombre"
                         onChange={e => setNombre(e.target.value)}
                     />
                 </div>
@@ -66,7 +73,7 @@ export default function Signup() {
                     <input
                         type="text"
                         className="form-control"
-                        name="text"
+                        name="dni"
                         onChange={e => setDNI(e.target.value)}
                     />
                 </div>
@@ -75,7 +82,7 @@ export default function Signup() {
                     <input
                         type="text"
                         className="form-control"
-                        name="text"
+                        name="telefono"
                         onChange={e => setTelef(e.target.value)}
                     />
                 </div>
