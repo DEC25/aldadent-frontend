@@ -19,6 +19,8 @@ import DashProduct from './components/dashboard/DashProducts'
 import DashUsers from './components/dashboard/DashUsers';
 import SaleCompare from './components/dashboard/SaleCompare';
 
+// Comenzando AldaDent 2.0 08/02
+
 function App() {
 
   return (
