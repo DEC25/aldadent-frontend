@@ -8,6 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { isLogged } from '../../services/auth.service'
 import toast from 'react-hot-toast'
 import list from '../../image/pedidos (1).png'
+import SearchBox from './SearchBox'
+import { Navbar, Container, Nav, NavDropdown, NavLink } from 'react-bootstrap'
 
 export default function Header() {
 
@@ -26,39 +28,105 @@ export default function Header() {
     }
 
     return (
-        <div className=" bg-info">
-            <ul className="nav container">
-                <div className="col-8 ">
-                    <li className="nav-item">
-                        <Link className="nav-link h5" aria-current="page" to={'/'}><img src={logo} alt='' className="border border-secondary rounded-circle" style={{ width: "8%" }} /> <strong>&nbsp; ALDA DENT</strong>  </Link>
-                    </li>
+        <>
+            <Navbar bg='info' expand="lg">
+                <Container>
+                    <Navbar.Brand id='navbar-brand'>
+                        <Link className='nav-link' to={'/'}>
+                            <img src={logo} alt="" className='rounded-circle nav-logo' />
+                            <b className='d-none d-lg-inline'>ALDA DENT</b>
+                        </Link>
+                    </Navbar.Brand>
+                    <SearchBox
+                        ClassName={'d-flex'}
+                        ItemsResult={[]}
+                        OnChange={e => console.log(e.target.value)}
+                        Placeholder='¿Que producto estas buscando?'
+                    />
+                    <Nav>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav.Link>
+                                <Link to={'/productos'} className='nav-link'>
+                                    Productos
+                                </Link>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <Link to={'/carrito'} className='nav-link'>
+                                    Carrito
+                                </Link>
+                            </Nav.Link>
+                            {
+                                logged ?
+                                    <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown">
+                                        <NavDropdown.Item href="#action/3.1">Mi Cuenta</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={() => navigate('/pedidos')} >Mis Pedidos</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.3">Configuracion</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item onClick={logOut} >Cerrar Sesion</NavDropdown.Item>
+                                    </NavDropdown>
+                                    :
+                                    <Nav.Link href='/auth/login'> Iniciar Sesion </Nav.Link>
+                            }
+                        </Navbar.Collapse>
+                    </Nav>
+                </Container>
+            </Navbar>
 
-                </div>
-                <div className="col-4">
-                    <div className="d-flex  bd-highlight">
-                        <li className="nav-item  bd-highlight text-center">
-                            <Link className="nav-link my-2" to={'/pedidos'}><img src={list} className="border border-dark rounded-circle rounded float-end" alt='' style={{ width: '70%' }} /></Link>
+            {/* Esto es una prueba  */}
+
+            {/* <div className=" bg-info">
+                <ul className="nav container">
+                    <div className="col-4 ">
+                        <li className="nav-item">
+                            <Link
+                                className="nav-link h5"
+                                aria-current="page"
+                                to={'/'}
+                            >
+                                <img
+                                    src={logo}
+                                    alt=''
+                                    className="border border-secondary rounded-circle"
+                                    style={{ width: "8%" }}
+                                />
+                                <strong>&nbsp; ALDA DENT</strong>
+                            </Link>
                         </li>
-                        <li className="nav-item  bd-highlight text-center">
-                            <Link className="nav-link my-2" to={'/carrito'}><img src={carrito} className="border border-dark rounded-circle rounded float-end" alt='' style={{ width: '70%' }} /></Link>
-                        </li>
-                        {!logged ?
-                            <li className="nav-item bd-highlight text-center">
-                                <Link className="nav-link my-2 " to={'/auth/login'}><img src={login} className="border border-secondary rounded-circle" alt='' style={{ width: '30%' }} /></Link>
-                            </li>
-                            :
 
-                            <li className="nav-item  bd-highlight text-center">
-                                <div className="nav-link my-2"  >
-                                    <img src={logout} onClick={logOut} className="border border-dark rounded-circle rounded float-start" alt='' style={{ width: '70%', cursor: 'pointer' }} />
-                                </div>
-                            </li>
-
-                        }
                     </div>
-                </div>
-            </ul>
-        </div>
+                    <div className='col-4'>
+                        <SearchBox
+                            Placeholder={'Busca un producto...'}
+                            OnChange={(e) => console.log(e.target.value)}
+                            ItemsResult={['Producto 1', 'Producto 2', 'Producto 3']}
+                        />
+                    </div>
+                    <div className="col-4">
+                        <div className="d-flex  bd-highlight">
+                            <li className="nav-item  bd-highlight text-center">
+                                <Link className="nav-link my-2" to={'/pedidos'}><img src={list} className="border border-dark rounded-circle rounded float-end" alt='' style={{ width: '70%' }} /></Link>
+                            </li>
+                            <li className="nav-item  bd-highlight text-center">
+                                <Link className="nav-link my-2" to={'/carrito'}><img src={carrito} className="border border-dark rounded-circle rounded float-end" alt='' style={{ width: '70%' }} /></Link>
+                            </li>
+                            {!logged ?
+                                <li className="nav-item bd-highlight text-center">
+                                    <Link className="nav-link my-2 " to={'/auth/login'}><img src={login} className="border border-secondary rounded-circle" alt='' style={{ width: '30%' }} /></Link>
+                                </li>
+                                :
 
+                                <li className="nav-item  bd-highlight text-center">
+                                    <div className="nav-link my-2"  >
+                                        <img src={logout} onClick={logOut} className="border border-dark rounded-circle rounded float-start" alt='' style={{ width: '70%', cursor: 'pointer' }} />
+                                    </div>
+                                </li>
+
+                            }
+                        </div>
+                    </div>
+                </ul>
+            </div> */}
+        </>
     )
 }

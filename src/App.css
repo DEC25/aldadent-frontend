@@ -1,4 +1,5 @@
-     
+
+
 .bg{
   background-image: url(image/principal.jpg);
   background-position: center right ;
@@ -6,4 +7,23 @@
 
 .bg-gray {
   background-color: #efefef;
+}
+
+.search-box {
+  width: 25em;
+}
+
+#search-box__input {
+  width: inherit;
+  font-size: 12.5px;
+}
+
+#search-box__result {
+  position: absolute;
+  width: inherit;
+}
+
+.nav-logo {
+  width: 2.5em;
+  margin-right: 1em;
 }
