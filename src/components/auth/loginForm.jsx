@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import aldaDent from '../../image/aldadent.png'
 import { toast } from 'react-hot-toast'
 import { useEffect } from 'react'
+import { emailForm } from '../../services/validation.service'
 
 export default function LoginForm() {
 
@@ -12,9 +13,10 @@ export default function LoginForm() {
     const [Correo, setCorreo] = useState(null)
     const [Password, setPassword] = useState(null)
     const [DisableButton, setDisableButton] = useState(false)
+    const [VerifyEmail, setVerifyEmail] = useState(false);
 
     useEffect(() => {
-        if (isLogged()){
+        if (isLogged()) {
             navigate('/', { replace: true })
         }
     })
@@ -25,6 +27,11 @@ export default function LoginForm() {
         if (!Correo || !Password) {
             setDisableButton(false)
             return toast.error('Rellene todos los campos', { duration: 1350, icon: '📋' })
+        }
+
+        if (!VerifyEmail){
+            setDisableButton(false)
+            return toast.error('El correo no esta bien escrito. Intentelo de nuevo')
         }
 
         loginService({ correo: Correo, password: Password })
@@ -59,7 +66,13 @@ export default function LoginForm() {
             <form action="#">
                 <div className="mb-4">
                     <label htmlFor="email" className="form-label">Correo Electrónico</label>
-                    <input type="email" className="form-control" name="email" onChange={e => setCorreo(e.target.value)}></input>
+                    <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        onChange={e => setCorreo(e.target.value)}
+                        onKeyUp={e => setVerifyEmail(emailForm(e))}
+                    />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password" className="form-label">Password</label>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getDashboardAccess } from '../../services/dashboard.service';
 import { toast } from 'react-hot-toast'
 
@@ -12,8 +12,7 @@ export default function Dashboard() {
         getDashboardAccess()
             .then(a => {
                 if (!a.success) {
-                    toast.error(a.msg)
-                    return nav('/', { replace: true })
+                    return nav('/auth/login', { replace: true })
                 }
 
                 setSuccess(a.success)
