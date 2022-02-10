@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 import list from '../../image/pedidos (1).png'
 import SearchBox from './SearchBox'
 import { Navbar, Container, Nav, NavDropdown, NavLink } from 'react-bootstrap'
+import { getProductsSearch } from '../../services/products.service'
 
 export default function Header() {
 
@@ -38,9 +39,6 @@ export default function Header() {
                         </Link>
                     </Navbar.Brand>
                     <SearchBox
-                        ClassName={'d-flex'}
-                        ItemsResult={[]}
-                        OnChange={e => console.log(e.target.value)}
                         Placeholder='¿Que producto estas buscando?'
                     />
                     <Nav>
