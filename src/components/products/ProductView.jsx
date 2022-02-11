@@ -24,7 +24,7 @@ export default function ProductView() {
 
     useEffect(() => {
         getProduct()
-    }, [])
+    }, [id])
 
     return (
         <div className="container">

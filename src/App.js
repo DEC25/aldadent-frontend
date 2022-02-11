@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <Toaster toastOptions={{ duration: 1350 }} />
+      <Toaster toastOptions={{ duration: 1350, position: 'bottom-center', style: { background: 'black', color: 'whitesmoke' } }} />
       <Router>
         <Header />
         <Routes>

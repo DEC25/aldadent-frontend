@@ -45,6 +45,9 @@ export default function OrderList() {
                         <main className="container">
                             <div className="row">
                                 <div className="col-12 col-lg-9">
+                                    {
+                                        Orders.length !== 0 
+                                        ?
                                     <table className="table table-success table-striped">
                                         <thead>
                                             <tr>
@@ -63,6 +66,14 @@ export default function OrderList() {
 
                                         </tbody>
                                     </table>
+                                    :
+                                    <div
+                                        style={{ height: '100%' }}
+                                        className='d-flex justify-content-center align-items-center'
+                                    >
+                                        <h6 className='text-muted'>Todavía no tienes pedidos</h6>
+                                    </div>
+                                    }
                                 </div>
                                 <div className="col-12 col-lg-3 ">
                                     <p>

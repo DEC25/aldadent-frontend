@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { isLogged, loginService } from '../../services/auth.service'
 import { Link } from 'react-router-dom'
 import aldaDent from '../../image/aldadent.png'
@@ -9,6 +9,7 @@ import { emailForm } from '../../services/validation.service'
 
 export default function LoginForm() {
 
+    const { state } = useLocation()
     const navigate = useNavigate()
     const [Correo, setCorreo] = useState(null)
     const [Password, setPassword] = useState(null)
@@ -17,13 +18,14 @@ export default function LoginForm() {
 
     useEffect(() => {
         if (isLogged()) {
-            navigate('/', { replace: true })
+            navigate( state ? state.from : '/', { replace: true })
         }
     })
 
     const sendForm = async (e) => {
         e.preventDefault()
         setDisableButton(true)
+
         if (!Correo || !Password) {
             setDisableButton(false)
             return toast.error('Rellene todos los campos', { duration: 1350, icon: '📋' })
@@ -31,7 +33,7 @@ export default function LoginForm() {
 
         if (!VerifyEmail){
             setDisableButton(false)
-            return toast.error('El correo no esta bien escrito. Intentelo de nuevo')
+            return toast('El correo no esta bien escrito. Intentelo de nuevo', { icon: '@' })
         }
 
         loginService({ correo: Correo, password: Password })
@@ -40,7 +42,7 @@ export default function LoginForm() {
                     return toast.error(msg, { icon: '🔒' })
                 }
 
-                navigate('/')
+                navigate( state ? state.from : '/', { replace: true })
                 toast.success(msg, { icon: '🔓' })
             })
             .catch(err => toast.error(err.message));
@@ -76,7 +78,7 @@ export default function LoginForm() {
                 </div>
                 <div className="mb-4">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" name="email" onChange={e => setPassword(e.target.value)} ></input>
+                    <input type="password" autoComplete='on' className="form-control" name="email" onChange={e => setPassword(e.target.value)} />
                 </div>
                 <div className="mb-4 form-check">
                     <input type="checkbox" name="connected" className="form-check-input" />

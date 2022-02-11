@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate, Link } from 'react-router-dom'
 import { isLogged } from '../../services/auth.service'
 import { getItemsCarService } from '../../services/car.service'
 import { toast } from 'react-hot-toast'
@@ -14,31 +14,7 @@ const InfoProduct = ({ idx, prod, price, cant, total }) => {
             <th>{cant}</th>
             <th>{parseFloat(total).toFixed(2)}</th>
         </tr>
-
-        // <>
-        //     <div className="col-12 col-lg-3 bg-light">
-        //         <p>
-        //             {prod}
-        //         </p>
-        //     </div>
-        //     <div className="col-12 col-lg-3 bg-light">
-        //         <p>
-        //             {price}
-        //         </p>
-        //     </div>
-        //     <div className="col-12 col-lg-3 bg-light">
-        //         <p>
-        //             <button>-</button>
-        //             <input type="number" value={cant} style={{ display: 'inline-flex' }} />
-        //             <button>+</button>
-        //         </p>
-        //     </div>
-        //     <div className="col-12 col-lg-3 bg-light">
-        //         <p>
-        //             {total}
-        //         </p>
-        //     </div>
-        // </>
+        
     )
 }
 
@@ -72,11 +48,10 @@ export default function Car() {
         total = subtotal * 1.18;
         setSubTotal(parseFloat(subtotal).toFixed(2))
         setTotalF(parseFloat(total).toFixed(2))
-        console.log(total, subtotal)
     }
 
     const goTo = () => {
-        if (NI === 0){
+        if (NI === 0) {
             return toast.error('No tienes items en el carrito')
         }
         nav('/pedido', { state: { st: SubTotal, tf: TotalF } })
@@ -93,41 +68,52 @@ export default function Car() {
             {
                 isLogged() ?
                     <main className="container">
-                        <main className="container">
-                            <h1>MI CARRITO</h1>
+                        <main className="container p-3">
+                            <h1 className='pb-3'>MI CARRITO</h1>
                             <div className="row">
                                 <div className="col-12 col-lg-9">
-                                    <table className="table table-success table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope='col'>#</th>
-                                                <th scope='col'>Producto</th>
-                                                <th scope='col'>Precio</th>
-                                                <th scope='col'>Cantidad</th>
-                                                <th scope='col'>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                                Items.map((item, idx) =>
-                                                    <InfoProduct
-                                                        idx={idx}
-                                                        key={idx}
-                                                        prod={item.nom_prod}
-                                                        price={item.precio_prod}
-                                                        cant={item.cantidad}
-                                                        total={item.total}
-                                                    />)
-                                            }
-                                        </tbody>
-                                        {/* {CarItems.map((item, idx) =>
-                                <InfoProduct
-                                    prod={item.nom_prod}
-                                    price={item.precio_prod}
-                                    cant={item.cantidad}
-                                    total={item.total}
-                                />)} */}
-                                    </table>
+                                    {
+                                        NI === 0 ?
+                                            <div style={{ height: '100%' }} className='d-flex align-items-center justify-content-center'>
+                                                <h6 className='text-muted text-center'>
+                                                    Aún no hay productos por aquí...
+                                                    <Link className='nav-link' to='/productos'>¿Agregar algunos?</Link>
+                                                </h6>
+                                            </div>
+                                            :
+                                            <>
+                                                <table className="table table-success table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope='col'>#</th>
+                                                            <th scope='col'>Producto</th>
+                                                            <th scope='col'>Precio</th>
+                                                            <th scope='col'>Cantidad</th>
+                                                            <th scope='col'>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {
+                                                            Items.map((item, idx) =>
+                                                                <InfoProduct
+                                                                    idx={idx}
+                                                                    key={idx}
+                                                                    prod={item.nom_prod}
+                                                                    price={item.precio_prod}
+                                                                    cant={item.cantidad}
+                                                                    total={item.total}
+                                                                />)
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                                <Link
+                                                    to={'/productos'}
+                                                    className='nav-link text-center text-muted'
+                                                >
+                                                    ¿ Seguir Comprando ?
+                                                </Link>
+                                            </>
+                                    }
                                 </div>
                                 <div className="col-12 col-lg-3 ">
                                     <p>
@@ -146,12 +132,10 @@ export default function Car() {
                                                 <p className="text-danger">Descuentos:</p>
                                                 <p>total: {TotalF}</p>
                                                 <br />
-                                                <button type="button" className="btn btn-info text-white" onClick={goTo}>
-                                                    {/* <a href="Yarasca.html"> */}
-                                                    Continuar
-                                                    {/* </a> */}
-                                                </button>
                                             </div>
+                                            <button type="button" className="btn btn-light bg-info text-white" onClick={goTo}>
+                                                Continuar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +143,7 @@ export default function Car() {
                         </main>
                     </main>
                     :
-                    <Navigate to={'/auth/login'} />
+                    <Navigate to={'/auth/login'} state={{ from: '/carrito' }} />
             }
         </>
     )

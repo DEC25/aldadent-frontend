@@ -12,6 +12,7 @@ export default function Login() {
         if (path.pathname === '/auth'){
             navigate('/auth/login', { replace: true })
         }
+
     }, [navigate, path])
 
     return (
