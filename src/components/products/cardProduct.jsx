@@ -21,12 +21,27 @@ export const CardProduct = ({ id, img, added }) => {
         e.preventDefault()
 
         if (!isLogged()) {
-            return toast('Debes iniciar sesión', { icon: '🔒' })
+            setCantidad('')
+            return toast(
+            <h6>
+                Primero debes {' '}
+                <span
+                    className='text-primary'
+                    onClick={() => navigate('/auth/login', { state: { from: '/productos' } })}
+                    style={{ cursor: 'pointer' }}
+                >
+                    iniciar sesión
+                </span>
+            </h6>, {
+                icon: '🔒',
+                duration: 1800
+            })
         }
 
         if (Cantidad === '') {
             return toast.error('Elige una cantidad')
         }
+
         addItemCarService({ idProd: id, cantidad: Cantidad })
             .then(({ success, msg }) => {
                 if (!success) {
