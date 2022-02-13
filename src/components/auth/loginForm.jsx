@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Spinner } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { isLogged, loginService } from '../../services/auth.service'
 import { Link } from 'react-router-dom'
@@ -18,7 +19,7 @@ export default function LoginForm() {
 
     useEffect(() => {
         if (isLogged()) {
-            navigate( state ? state.from : '/', { replace: true })
+            navigate(state ? state.from : '/', { replace: true })
         }
     })
 
@@ -31,7 +32,7 @@ export default function LoginForm() {
             return toast.error('Rellene todos los campos', { duration: 1350, icon: '📋' })
         }
 
-        if (!VerifyEmail){
+        if (!VerifyEmail) {
             setDisableButton(false)
             return toast('El correo no esta bien escrito. Intentelo de nuevo', { icon: '@' })
         }
@@ -42,7 +43,7 @@ export default function LoginForm() {
                     return toast.error(msg, { icon: '🔒' })
                 }
 
-                navigate( state ? state.from : '/', { replace: true })
+                navigate(state ? state.from : '/', { replace: true })
                 toast.success(msg, { icon: '🔓' })
             })
             .catch(err => toast.error(err.message));
@@ -85,7 +86,25 @@ export default function LoginForm() {
                     <label htmlFor="connected" className="form-check-label">Mantenerme Conectado</label>
                 </div>
                 <div className="d-grid">
-                    <button type="submit" className="btn btn-primary" disabled={DisableButton} onClick={sendForm}>Iniciar Sesión</button>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                        disabled={DisableButton}
+                        onClick={sendForm}
+                    >
+                        {
+                            DisableButton ?
+                                <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                />
+                                : <>Iniciar Sesión</>
+                        }
+
+                    </button>
                 </div>
                 <div className="my-3">
                     <span>¿No tienes cuenta? <Link to={'/auth/signup'} >Registrate </Link></span><br />

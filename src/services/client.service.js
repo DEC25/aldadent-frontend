@@ -10,3 +10,12 @@ export const postAddress = async addressData => {
     })
     return data
 }
+
+export const getAddressesService = async () => {
+    const { data } = await axios.get(API_URL, {
+        headers: {
+            authorization: `bearer ${window.sessionStorage.getItem('tkn_ad')}`
+        }
+    })
+    return data
+}

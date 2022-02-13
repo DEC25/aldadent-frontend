@@ -58,7 +58,7 @@ export default function Header() {
                                 logged ?
                                     <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown">
                                         <NavDropdown.Item onClick={() => navigate('/pedidos')} >Mis Pedidos</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.3">Configuración</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={() => navigate('/cuenta/configuracion')}>Configuración</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item onClick={logOut} >Cerrar Sesión</NavDropdown.Item>
                                     </NavDropdown>

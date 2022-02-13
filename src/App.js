@@ -46,7 +46,7 @@ function App() {
           <Route path='/dashboard/products' element={ <DashProduct /> } />
           <Route path='/dashboard/users' element={ <DashUsers /> } />
           <Route path='/dashboard/sales' element={ <SaleCompare /> } />
-          <Route path='/micuenta' element={ <AccountPage /> } />
+          <Route path='/cuenta/configuracion' element={ <AccountPage /> } />
           {/* <Route path='/test' element={ <Bar options={options} data={data} /> } /> */}
         </Routes>
         <Footer />
