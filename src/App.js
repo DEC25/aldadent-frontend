@@ -18,6 +18,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import DashProduct from './components/dashboard/DashProducts'
 import DashUsers from './components/dashboard/DashUsers';
 import SaleCompare from './components/dashboard/SaleCompare';
+import AccountPage from './components/Account/AccountPage';
 
 // Comenzando AldaDent 2.0 08/02
 
@@ -45,6 +46,7 @@ function App() {
           <Route path='/dashboard/products' element={ <DashProduct /> } />
           <Route path='/dashboard/users' element={ <DashUsers /> } />
           <Route path='/dashboard/sales' element={ <SaleCompare /> } />
+          <Route path='/micuenta' element={ <AccountPage /> } />
           {/* <Route path='/test' element={ <Bar options={options} data={data} /> } /> */}
         </Routes>
         <Footer />
