@@ -39,7 +39,7 @@ export default function Header() {
                         </Link>
                     </Navbar.Brand>
                     <SearchBox
-                        Placeholder='¿Que producto estas buscando?'
+                        Placeholder='¿Que producto estás buscando?'
                     />
                     <Nav>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -57,11 +57,10 @@ export default function Header() {
                             {
                                 logged ?
                                     <NavDropdown title="Mi Cuenta" id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1">Mi Cuenta</NavDropdown.Item>
                                         <NavDropdown.Item onClick={() => navigate('/pedidos')} >Mis Pedidos</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.3">Configuracion</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.3">Configuración</NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item onClick={logOut} >Cerrar Sesion</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={logOut} >Cerrar Sesión</NavDropdown.Item>
                                     </NavDropdown>
                                     :
                                     <Nav.Link href='/auth/login'> Iniciar Sesion </Nav.Link>

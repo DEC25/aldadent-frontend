@@ -4,7 +4,7 @@ import publi from '../../image/Alda.jpg'
 
 export default function Footer() {
     return (
-        <footer style={{ marginTop: '50px' }}>
+        <footer style={{ marginTop: '50px' }} >
             <div className="bg-secondary" >
                 <div className="container">
                     <div className="row">
