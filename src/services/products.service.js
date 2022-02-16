@@ -21,6 +21,11 @@ export const updateProductService = async (id, dataProduct) => {
     return data
 }
 
+export const deleteProductService = async (id) => {
+    const { data } = await axios.delete(`${API_URL}/${id}`)
+    return data
+}
+
 export const postProductService = async dataProduct => {
     const { data } = await axios.post(API_URL, dataProduct)
     return data

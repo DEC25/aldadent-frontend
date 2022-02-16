@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ListGroup, Form, Row, Col, Button } from 'react-bootstrap'
+import { ListGroup, Form, Row, Col, Button, Badge } from 'react-bootstrap'
 import { toast } from 'react-hot-toast'
 import { deleteAddressService, getAddressesService, updateAddressService } from '../../services/client.service'
 import CustomModal from '../helpers/CustomModal'
@@ -123,7 +123,7 @@ export default function Addresses() {
                         </Form.Group>
                     </Row>
                     <Form.Group>
-                        <Form.Label>Direccion Principal</Form.Label>
+                        <Form.Label className='text-muted h6'>Direccion Principal</Form.Label>
                         <Form.Check label='Establecer como Direccion Principal' />
                     </Form.Group>
                 </Form>
@@ -143,7 +143,7 @@ export default function Addresses() {
                                         onClick={() => clickHandler(A.id)}
                                         action
                                     >
-                                        <div className="h6 text-muted">{A.tag}</div>
+                                        <div className="h6 text-muted">{A.tag}    <Badge bg='danger' pill>Principal</Badge></div>
                                         <div className="h5">{A.direccion}, {A.departamento}</div>
                                     </ListGroup.Item>
                                 )

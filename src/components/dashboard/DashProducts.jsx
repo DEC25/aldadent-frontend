@@ -37,7 +37,7 @@ export default function Dashboard() {
 
         // Aqui va el HTML, dentro de la funcion 'return( _aqui_ )'
 
-        <>
+        <div className='container'>
             <p className=" h1 text-center mt-5">Productos vendidos del mes,cantidades,ingresos</p>
             <br /><br /><br />
             <section className="bg-grey">
@@ -58,7 +58,6 @@ export default function Dashboard() {
                     </div>
 
                 </div>
-
             </section>
             <br />
             <section className="bg-grey">
@@ -169,6 +168,6 @@ export default function Dashboard() {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     )
 }

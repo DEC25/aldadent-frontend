@@ -85,12 +85,12 @@ const ChartUsersMonth = () => {
 export default function DashUsers() {
 
     return (
-        <>
+        <div className='container'>
             <p class=" h1 text-center ">Usuarios Registrados</p>
             <br /><br /><br />
             <UserTotalMes />
             <br />
             <ChartUsersMonth />
-        </>
+        </div>
     );
 }

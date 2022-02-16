@@ -16,6 +16,15 @@ export const updateClientService = async cli => {
     return data
 }
 
+export const updatePasswordService = async password => {
+    const { data } = await axios.post(`${API_URL}/changepassword`, password, {
+        headers: {
+            authorization: `bearer ${window.sessionStorage.getItem('tkn_ad')}`
+        }
+    })
+    return data
+}
+
 export const postAddress = async addressData => {
     const { data } = await axios.post(`${API_URL}/address`, addressData, {
         headers: {
