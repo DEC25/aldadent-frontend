@@ -1,20 +1,41 @@
 import React, { useEffect, useState } from 'react'
+import { Spinner, Button } from 'react-bootstrap'
 import { Navigate, useNavigate, Link } from 'react-router-dom'
 import { isLogged } from '../../services/auth.service'
 import { getItemsCarService } from '../../services/car.service'
 import { toast } from 'react-hot-toast'
 
 const InfoProduct = ({ idx, prod, price, cant, total }) => {
+    
+    const [Cant, setCant] = useState(cant)
+
+    const addCant = () => {
+
+        setCant(Cant + 1)
+
+    }
+
+    const subsCant = () => {
+
+        if (Cant !== 1){
+            setCant(Cant - 1)
+        }
+
+    }
+    
     return (
 
         <tr>
             <th scope='row'>{idx + 1}</th>
             <th>{prod}</th>
-            <th>{parseFloat(price).toFixed(2)}</th>
-            <th>{cant}</th>
-            <th>{parseFloat(total).toFixed(2)}</th>
+            <th className='text-center'>{parseFloat(price).toFixed(2)}</th>
+            <th className='d-flex align-items-center justify-content-center'>
+                <Button size='sm' variant='info' className='text-white' onClick={() => subsCant()}><b>-</b></Button>
+                <div style={{ marginLeft: '10px', marginRight: '10px' }}>{Cant}</div>
+                <Button size='sm' variant='info' className='text-white' onClick={() => addCant()}><b>+</b></Button></th>
+            <th className='text-center'>{parseFloat(total).toFixed(2)}</th>
         </tr>
-        
+
     )
 }
 
@@ -25,8 +46,10 @@ export default function Car() {
     const [SubTotal, setSubTotal] = useState(0)
     const [TotalF, setTotalF] = useState(0)
     const [NI, setNI] = useState(0)
+    const [Loading, setLoading] = useState(false)
 
     const getCarItems = async () => {
+        setLoading(true)
         await getItemsCarService()
             .then(items => {
                 setItems([...items])
@@ -34,6 +57,7 @@ export default function Car() {
                 calculate(items)
             })
             .catch(err => console.log(err.message))
+        setLoading(false)
     }
 
     const calculate = (itms) => {
@@ -65,6 +89,10 @@ export default function Car() {
 
     return (
         <>
+            {Loading &&
+                <div className="text-center">
+                    <Spinner animation="border" variant="info" />
+                </div>}
             {
                 isLogged() ?
                     <main className="container">
@@ -85,11 +113,11 @@ export default function Car() {
                                                 <table className="table table-success table-striped">
                                                     <thead>
                                                         <tr>
-                                                            <th scope='col'>#</th>
-                                                            <th scope='col'>Producto</th>
-                                                            <th scope='col'>Precio</th>
-                                                            <th scope='col'>Cantidad</th>
-                                                            <th scope='col'>Total</th>
+                                                            <th scope='col' className='text-center'>#</th>
+                                                            <th scope='col' className='text-center'>Producto</th>
+                                                            <th scope='col' className='text-center'>Precio</th>
+                                                            <th scope='col' className='text-center'>Cantidad</th>
+                                                            <th scope='col' className='text-center'>Total</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

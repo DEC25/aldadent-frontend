@@ -11,6 +11,7 @@ import list from '../../image/pedidos (1).png'
 import SearchBox from './SearchBox'
 import { Navbar, Container, Nav, NavDropdown, NavLink } from 'react-bootstrap'
 import { getProductsSearch } from '../../services/products.service'
+import socket from '../../services/socket.service'
 
 export default function Header() {
 
@@ -21,6 +22,7 @@ export default function Header() {
     const logOut = () => {
         if (isLogged()) {
             window.sessionStorage.removeItem('tkn_ad')
+            socket.emit('logout', { data: 'Sesion finalizada' })
             navigate('/')
             return toast('Hasta Luego', { icon: '👋' })
         }

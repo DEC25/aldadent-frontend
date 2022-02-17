@@ -29,6 +29,7 @@ export default function ProductList() {
                 }
 
                 toast.success(res.msg)
+                setModalShow(false)
             })
             .catch(e => console.error(e.message))
 

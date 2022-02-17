@@ -21,7 +21,7 @@ export default function LoginForm() {
         if (isLogged()) {
             navigate(state ? state.from : '/', { replace: true })
         }
-    })
+    }, [])
 
     const sendForm = async (e) => {
         e.preventDefault()

@@ -35,12 +35,12 @@ export default function ProductView() {
                 <br />
                 <br />
                 <br />
-                <div className="col-6 text-center">
+                <div className="col-6">
                     <br />
                     <br />
                     <h1>{Name}</h1>
                     <br />
-                    <p>{Description}</p>
+                    <p style={{ whiteSpace: 'pre-line' }}>{Description}</p>
                     <br />
                     <button type="button" className="btn btn-outline-info btn-lg">
                         Agregar al carrito
