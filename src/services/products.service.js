@@ -12,7 +12,11 @@ export const getProductsService = async () => {
 }
 
 export const getProductService = async id => {
-    const { data } = await axios.get(`${API_URL}/${id}`)
+    const { data } = await axios.get(`${API_URL}/${id}`, {
+        headers: {
+            authorization: `bearer ${window.sessionStorage.getItem('tkn_ad')}`
+        }
+    })
     return data
 }
 

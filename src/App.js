@@ -50,6 +50,7 @@ function App() {
             <Route path='configuracion' element={<AccountPage />} />
             <Route path='productlist' element={ <ProductListDash /> } />
           </Route>
+          <Route path='/cuenta/configuracion' element={ <AccountPage /> } />
           {/* <Route path='/test' element={ <Bar options={options} data={data} /> } /> */}
         </Routes>
         <Footer />

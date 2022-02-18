@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { Spinner, Button } from 'react-bootstrap'
+import { Spinner, Button, Form } from 'react-bootstrap'
 import { Navigate, useNavigate, Link } from 'react-router-dom'
 import { isLogged } from '../../services/auth.service'
 import { getItemsCarService } from '../../services/car.service'
 import { toast } from 'react-hot-toast'
 
 const InfoProduct = ({ idx, prod, price, cant, total }) => {
-    
-    const [Cant, setCant] = useState(cant)
+
+    const [Cant, setCant] = useState(cant.toString())
 
     const addCant = () => {
 
-        setCant(Cant + 1)
-
+        setCant((Number(Cant) + 1).toString())
     }
 
     const subsCant = () => {
 
-        if (Cant !== 1){
-            setCant(Cant - 1)
+        if (Number(Cant) > 1) {
+            return setCant((Number(Cant) - 1).toString())
         }
 
+        setCant("1")
+
     }
-    
+
     return (
 
         <tr>
@@ -30,9 +31,17 @@ const InfoProduct = ({ idx, prod, price, cant, total }) => {
             <th>{prod}</th>
             <th className='text-center'>{parseFloat(price).toFixed(2)}</th>
             <th className='d-flex align-items-center justify-content-center'>
-                <Button size='sm' variant='info' className='text-white' onClick={() => subsCant()}><b>-</b></Button>
-                <div style={{ marginLeft: '10px', marginRight: '10px' }}>{Cant}</div>
-                <Button size='sm' variant='info' className='text-white' onClick={() => addCant()}><b>+</b></Button></th>
+                <Button size='sm' variant='secondary' className='text-white' onClick={() => subsCant()}><b>-</b></Button>
+                {/* <div style={{ marginLeft: '10px', marginRight: '10px' }}>{Cant}</div> */}
+                <input
+                    type="text"
+                    className='text-center m-0'
+                    onChange={e => setCant(e.target.value)}
+                    value={Cant}
+                    style={{ width: '2rem' }}
+                />
+                <Button size='sm' variant='secondary' className='text-white' onClick={() => addCant()}><b>+</b></Button>
+            </th>
             <th className='text-center'>{parseFloat(total).toFixed(2)}</th>
         </tr>
 

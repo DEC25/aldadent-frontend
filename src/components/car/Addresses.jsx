@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Form, Row, Col, Accordion, Button, Badge } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { postAddress } from '../../services/client.service'
 import { toast } from 'react-hot-toast'
@@ -17,19 +18,22 @@ export default function Addresses(props) {
     const [NI, setNI] = useState(0)
 
     const createAddress = () => {
-        postAddress({
-            direccion: Direcc,
-            departamento: Depart,
-            proposito: ''
-        })
-            .then(({ success, msg }) => {
-                if (!success) {
-                    return toast.error(msg)
-                }
 
-                toast.success('Direccion Creada Correctamente')
-            })
-            .catch(err => toast.error('Algo salio mal'))
+        toast.success('Direccion creada. Ya puedes finalizar tu compra', { duration: 3000 })
+
+        // postAddress({
+        //     direccion: Direcc,
+        //     departamento: Depart,
+        //     proposito: ''
+        // })
+        //     .then(({ success, msg }) => {
+        //         if (!success) {
+        //             return toast.error(msg)
+        //         }
+
+        //         toast.success('Direccion Creada Correctamente')
+        //     })
+        //     .catch(err => toast.error('Algo salio mal'))
     }
 
     const createSale = () => {
@@ -38,7 +42,7 @@ export default function Addresses(props) {
             return toast.error('No tienes items en el carrito')
         }
 
-        if (!state){
+        if (!state) {
             return toast.error('Primero debes pasar por la pagina del carrito')
         }
 
@@ -47,7 +51,7 @@ export default function Addresses(props) {
             total: state.tf
         })
             .then(res => {
-                if (!res.success){
+                if (!res.success) {
                     return toast.error(res.msg)
                 }
 
@@ -58,12 +62,15 @@ export default function Addresses(props) {
     }
 
     useEffect(() => {
-        if (!state){
+
+        document.title = 'Mi Cuenta'
+
+        if (!state) {
             getItemsCarService()
-            .then(items => {
-                setNI(items.length)
-            })
-            .catch()
+                .then(items => {
+                    setNI(items.length)
+                })
+                .catch()
             return
         }
 
@@ -73,16 +80,83 @@ export default function Addresses(props) {
 
     return (
         <>
-            <div className="container">
+            <div className="container mt-3">
                 <h4>Direccion de Envio</h4> <br />
             </div>
-
             <main className="container ">
                 <div className="row">
                     <div className="col-12 col-lg-12 ">
                         <div className="row">
                             <div className="col-12 col-lg-8 ">
-                                <article className="card h-100 bg-light" >
+                                <Form>
+                                    <Accordion defaultActiveKey="0" flush>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>
+                                                Dirección Principal
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                <h6 className='text-muted mb-3'>Se usará tu dirección establecida como principal</h6>
+                                                <p className='h5 d-flex'>Calle Siempre Viva, Springfield <h6><Badge bg='primary' style={{ marginLeft: '.5rem' }}>Casa</Badge></h6></p>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                        <Accordion.Item eventKey="1">
+                                            <Accordion.Header>
+                                                Elegir otra dirección
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                <h6 className='text-muted mb-3'>Elige otra dirección que está vinculada a tu cuenta.</h6>
+                                                <Form.Group>
+                                                    <Form.Group className='d-flex'>
+                                                        <Form.Check type='radio' style={{ marginRight: '7px' }} />
+                                                        <Form.Label>Calle Los Wachines, Juzz <Badge bg='secondary'>Depa</Badge></Form.Label>
+                                                    </Form.Group>
+                                                    <Form.Group className='d-flex'>
+                                                        <Form.Check type='radio' style={{ marginRight: '7px' }} />
+                                                        <Form.Label>Calle Los Wachines, Juzz <Badge bg='secondary'>Casa Juzz</Badge></Form.Label>
+                                                    </Form.Group>
+                                                    <Form.Group className='d-flex'>
+                                                        <Form.Check type='radio' style={{ marginRight: '7px' }} />
+                                                        <Form.Label>Calle Los Wachines, Juzz <Badge bg='secondary'>Bunker</Badge></Form.Label>
+                                                    </Form.Group>
+                                                </Form.Group>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                        <Accordion.Item eventKey='2'>
+                                            <Accordion.Header>Crear Dirección</Accordion.Header>
+                                            <Accordion.Body>
+                                                <h6 className='text-muted mb-3'>Crea una nueva dirección que se usará como destino de tu pedido.</h6>
+                                                <Row>
+                                                    <Form.Group className='mb-3'>
+                                                        <Form.Label>Dirección</Form.Label>
+                                                        <Form.Control
+                                                            placeholder='Escribe una direccion'
+                                                        />
+                                                    </Form.Group>
+                                                    <Form.Group as={Col}>
+                                                        <Form.Label>Departamento</Form.Label>
+                                                        <Form.Control
+                                                            placeholder='Selecciona'
+                                                        />
+                                                    </Form.Group>
+                                                    <Form.Group as={Col}>
+                                                        <Form.Label>Nombre / Etiqueta</Form.Label>
+                                                        <Form.Control
+                                                            placeholder='Ej. Casa, Trabajo'
+                                                        />
+                                                    </Form.Group>
+                                                </Row>
+                                                <Button
+                                                    className='mt-4'
+                                                    size='sm'
+                                                    onClick={createAddress}
+                                                >
+                                                    Guardar Datos
+                                                </Button>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+                                </Form>
+                                {/* <article className="card h-100 bg-light" >
                                     <div className="card body p-3">
                                         <div className="d-flex ">
                                             <div className="ps-Lg-3">
@@ -151,7 +225,7 @@ export default function Addresses(props) {
                                             </div>
                                         </div>
                                     </div>
-                                </article>
+                                </article> */}
                             </div>
                             <div className="col-12 col-lg-4" >
                                 <article className="card h-100 bg-light">
